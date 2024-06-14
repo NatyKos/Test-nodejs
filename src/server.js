@@ -32,7 +32,7 @@ const startServer = () => {
     });
   });
 
-  app.get('/students/:studentId', async (req, res) => {
+  app.get('/students/:studentId', async (req, res, next) => {
     const { studentId } = req.params;
     const student = await getStudentById(studentId); // Відповідь, якщо контакт не знайдено
     if (!student) {
@@ -46,6 +46,7 @@ const startServer = () => {
     res.status(200).json({
       data: student,
     });
+    next();
   });
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
