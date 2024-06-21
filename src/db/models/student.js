@@ -24,6 +24,10 @@ const studentsSchema = new Schema(
       required: true,
       default: false,
     },
+    email: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,

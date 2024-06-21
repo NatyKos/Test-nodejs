@@ -79,7 +79,7 @@ export const patchStudetnController = async (req, res, next) => {
   }
   res.json({
     status: 200,
-    me: 'Successfully patched a student!',
+    message: 'Successfully patched a student!',
     data: result.student,
   });
 };

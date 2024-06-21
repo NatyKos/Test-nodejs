@@ -12,6 +12,7 @@ const startServer = () => {
   const logger = pino({ transport: { target: 'pino-pretty' } });
 
   const app = express();
+  app.use(express.json());
   app.use(logger);
   app.use(cors());
   app.use(router);
