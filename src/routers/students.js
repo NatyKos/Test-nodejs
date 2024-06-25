@@ -13,7 +13,7 @@ import {
   createStudentSchema,
   updateStudentSchema,
 } from '../validation/students.js';
-import { isValidId } from '../middlewares/isValidId.js';
+import isValidId from '../middlewares/isValidId.js';
 
 const router = Router();
 router.get('/students', ctrlWrapper(getStudentsController));
