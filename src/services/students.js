@@ -4,13 +4,20 @@ import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 export const getAllStudents = async ({ page, perPage }) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
-  const studentsQuery = await StudentsCollection.find();
+
+  const studentsQuery = StudentsCollection.find();
   const studentsCount = await StudentsCollection.find()
     .merge(studentsQuery)
     .countDocuments();
+
   const students = await studentsQuery.skip(skip).limit(limit).exec();
+
   const paginationData = calculatePaginationData(studentsCount, perPage, page);
-  return { data: students, ...paginationData };
+
+  return {
+    data: students,
+    ...paginationData,
+  };
 };
 
 export const getStudentById = async (studentId) => {

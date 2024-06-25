@@ -19,7 +19,7 @@ const router = Router();
 router.get('/students', ctrlWrapper(getStudentsController));
 router.get(
   '/students/:studentId',
-  isValidId(),
+  isValidId,
   ctrlWrapper(getStudentByIdController),
 );
 router.post(
