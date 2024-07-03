@@ -39,6 +39,7 @@ export const loginUser = async (payload) => {
 };
 
 export const logoutUser = async (sessionId) => {
+  console.log('Logout Session ID:', sessionId);
   await SessionsCollections.deleteOne({ _id: sessionId });
 };
 
@@ -58,6 +59,7 @@ export const refreshUserSession = async ({ sessionId, refreshToken }) => {
     _id: sessionId,
     refreshToken,
   });
+  console.log('Refresh Session:', session);
   if (!session) {
     throw createHttpError(401, 'Session not found');
   }
