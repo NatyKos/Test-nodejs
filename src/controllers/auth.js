@@ -13,7 +13,6 @@ export const registerUserController = async (req, res) => {
 
 export const loginUserController = async (req, res) => {
   const session = await loginUser(req.body);
-  console.log('Login Session:', session);
   res.cookie('refreshToken', session.refreshToken, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
@@ -32,7 +31,6 @@ export const loginUserController = async (req, res) => {
 };
 
 export const logoutUserController = async (req, res) => {
-  console.log('Logout Cookies:', req.cookies);
   if (req.cookies.sessionId) {
     await logoutUser(req.cookies.sessionId);
   }
