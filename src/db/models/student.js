@@ -28,6 +28,10 @@ const studentsSchema = new Schema(
       type: String,
       required: false,
     },
+    parentId: {
+      type: Schema.Types.ObjectId,
+      ref: 'users',
+    },
   },
   {
     timestamps: true,
